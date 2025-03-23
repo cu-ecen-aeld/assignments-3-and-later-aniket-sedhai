@@ -12,7 +12,6 @@ BUSYBOX_VERSION=1_33_1
 FINDER_APP_DIR=$(realpath $(dirname $0))
 ARCH=arm64
 CROSS_COMPILE=aarch64-none-linux-gnu-
-REPO_PATH=/home/aniket-sedhai/Documents/AESD/Course_1/assignments-3-and-later-aniket-sedhai
 
 if [ $# -lt 1 ]
 then
@@ -106,14 +105,12 @@ make CROSS_COMPILE=${CROSS_COMPILE}
 
 # TODO: Copy the finder related scripts and executables to the /home directory
 # on the target rootfs
-cd "${REPO_PATH}"
-cp finder-app/writer "${OUTDIR}/rootfs/home"
-cp finder-app/finder.sh "${OUTDIR}/rootfs/home"
-cp finder-app/finder-test.sh "${OUTDIR}/rootfs/home"
-cp finder-app/autorun-qemu.sh "${OUTDIR}/rootfs/home"
+cp writer "${OUTDIR}/rootfs/home"
+cp finder.sh "${OUTDIR}/rootfs/home"
+cp finder-test.sh "${OUTDIR}/rootfs/home"
+cp autorun-qemu.sh "${OUTDIR}/rootfs/home"
 mkdir -p "${OUTDIR}/rootfs/home/conf"
-cp conf/username.txt "${OUTDIR}/rootfs/home/conf"
-cp conf/assignment.txt "${OUTDIR}/rootfs/home/conf"
+cp ../conf/* "${OUTDIR}/rootfs/home/conf"
 
 # TODO: Chown the root directory
 cd "${OUTDIR}/rootfs"
